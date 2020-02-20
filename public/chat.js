@@ -14,16 +14,10 @@ btn.addEventListener('click', function(){
     });
 });
 
-/*message.addEventListener('click', function(){
+socket.on('chat:message',  function(data){
 
-    socket.emit('chat:timeMessage', output.value )
-
-    
-}); 
-*/
-socket.on('chat:message', function(data){
-
-    output.innerHTML +=`<p>
-        <strong> 
+    output.innerHTML += `<p>
+        <strong> ${data.username}</strong> :${data.message}
     </p>`
-})
+});
+

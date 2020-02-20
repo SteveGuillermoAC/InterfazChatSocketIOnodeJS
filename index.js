@@ -24,9 +24,7 @@ io.on('connection', (socket)=>{
 
         io.sockets.emit('chat:message', data)
     });
-/*
-    socket.on('chat:timeMessage', Date
-*/
+
 });
 
 
