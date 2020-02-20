@@ -1,5 +1,13 @@
 var socket = io()
 
+
+//datos hora
+var fecha= new Date();
+var hora = fecha.getHours();
+var minutos= fecha.getMinutes();
+var h= hora+':'+minutos;
+
+
 //DOM ELEMENTs
 let message = document.getElementById('message');
 let username = document.getElementById('username');
@@ -7,17 +15,26 @@ let btn = document.getElementById('send');
 let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
-btn.addEventListener('click', function(){
-   socket.emit('chat:message', {
+btn.addEventListener('click', function () {
+    socket.emit('chat:message', {
+        hora: h,
         message: message.value,
         username: username.value
     });
 });
 
-socket.on('chat:message',  function(data){
+socket.on('chat:message', function (data) {
 
     output.innerHTML += `<p>
-        <strong> ${data.username}</strong> :${data.message}
+        <strong>${data.hora} ${data.username}</strong> :${data.message}
     </p>`
 });
 
+
+
+socket.on('chat:timeMessage', function (data){
+
+    actions.innerHTML += `<p>
+  <strong>${data.hora} ${data.username}</strong> :${data.message}
+    </p>`
+});

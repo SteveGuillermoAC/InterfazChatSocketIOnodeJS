@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+
+
 //Consiguracion
 app.set('port', process.env. PORT || 3000);
 
@@ -25,6 +27,10 @@ io.on('connection', (socket)=>{
         io.sockets.emit('chat:message', data)
     });
 
+    socket.on('chat:timeMessage', (data)=>{
+        htmlChat.append(h+hora+':'+minutos+'='+data+'<br>');
+
+    });
 });
 
 
