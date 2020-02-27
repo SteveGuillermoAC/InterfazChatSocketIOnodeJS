@@ -19,8 +19,6 @@ const server =app.listen(app.get('port'), ()=>{
 const SocketIO =require('socket.io');
 const io = SocketIO(server);
 
-const $user = $('#usernames');
-
 
 io.on('connection', (socket)=>{
     console.log('new connection', socket.id);
@@ -36,14 +34,7 @@ io.on('connection', (socket)=>{
     });
 
     
-socket.on('usernames', data=>{
 
-    let html ='';
-    for (let i=0; i <data.length; i++){
-        html += `<p> <i class="fas fa-user"></i> ${data[i]} </p>`
-    }
-    $user.html(html);
-})
 });
 
 

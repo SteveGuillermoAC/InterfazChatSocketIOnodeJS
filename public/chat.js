@@ -15,7 +15,6 @@ let btn = document.getElementById('send');
 let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
-//const $user = $('#usernames');
 
 btn.addEventListener('click', function () {
     socket.emit('chat:message', {
@@ -41,6 +40,7 @@ socket.on('chat:timeMessage', function (data){
     </p>`
 });
 
+//lista de usuarios
 socket.on('usernames', data=>{
 
     let html ='';
