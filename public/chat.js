@@ -15,6 +15,8 @@ let btn = document.getElementById('send');
 let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
+//const $user = $('#usernames');
+
 btn.addEventListener('click', function () {
     socket.emit('chat:message', {
         hora: h,
@@ -38,3 +40,12 @@ socket.on('chat:timeMessage', function (data){
   <strong>${data.hora} ${data.username}</strong> :${data.message}
     </p>`
 });
+
+socket.on('usernames', data=>{
+
+    let html ='';
+    for (let i=0; i <data.length; i++){
+        html += `<p> <i class="fas fa-user"></i> ${data[i]} </p>`
+    }
+    $user.html(html);
+})
