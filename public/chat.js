@@ -16,19 +16,25 @@ let output = document.getElementById('output');
 let actions = document.getElementById('actions');
 
 
+let usernamesList =document.getElementById('usernames');
+let usuarios =[]; 
+let chat = ('')  
+
 btn.addEventListener('click', function () {
     socket.emit('chat:message', {
         hora: h,
         message: message.value,
-        username: username.value
+        username: username.value,
+        
     });
 });
 
 socket.on('chat:message', function (data) {
 
-    output.innerHTML += `<p>
-        <strong>${data.hora} ${data.username}</strong> :${data.message}
+    output.innerHTML += `<p> 
+        <strong>${data.hora} ${data.username} :<font color="#ffffff" > ${data.message}</font> </strong>
     </p>`
+    usernamesList.innerHTML +=`<p>${data.username}</p>`
 });
 
 
@@ -41,11 +47,21 @@ socket.on('chat:timeMessage', function (data){
 });
 
 //lista de usuarios
-socket.on('usernames', data=>{
+socket.on('usernamesList', data=>{
 
     let html ='';
     for (let i=0; i <data.length; i++){
-        html += `<p> <i class="fas fa-user"></i> ${data[i]} </p>`
+        html += `<p> <i> class="fas fa-unernamesList"></i> ${data[i]} </p>`
     }
-    $user.html(html);
-})
+    usernamesList.html(html);
+});
+
+socket.on('chats:server', function(data){
+
+    chat.append(data.hora+' '+`<b>+ data.username +</b>: `+data.message +'<br/>')
+
+    switch(data.message){
+        case 'hola' :chat.append(data.hora+' '+'<b>'+ 'Servidor'+ '</b>: ' + "hola"+'<br/>')
+        break;
+    };
+});
