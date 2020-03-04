@@ -1,9 +1,6 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-
-
-
 //Consiguracion
 app.set('port', process.env. PORT || 3000);
 
@@ -22,9 +19,8 @@ const io = SocketIO(server);
 
 io.on('connection', (socket)=>{
     console.log('new connection', socket.id);
-
     socket.on('chat:message' , (data)=>{
-
+        
         io.sockets.emit('chat:message', data)
     });
 
@@ -32,11 +28,4 @@ io.on('connection', (socket)=>{
         htmlChat.append(h+hora+':'+minutos+'='+data+'<br>');
 
     });
-
-    
-
 });
-
-
-
-

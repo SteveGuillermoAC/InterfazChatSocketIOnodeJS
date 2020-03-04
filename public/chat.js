@@ -25,8 +25,15 @@ btn.addEventListener('click', function () {
         hora: h,
         message: message.value,
         username: username.value,
-        
-    });
+
+    })
+    if(message.value=='hola'){
+        socket.emit('chat:message', {hora: h,message: 'Server says hola', username:'Server'})
+    }else if(message.value=='nada'){
+        socket.emit('chat:message', {hora: h,message: 'Server doesnt say anything', username:'Server'})
+    }else if (message.value=='que hubo'){
+        socket.emit('chat:message', {hora: h,message: 'Hey', username:'Server'})
+    }
 });
 
 socket.on('chat:message', function (data) {
@@ -36,8 +43,6 @@ socket.on('chat:message', function (data) {
     </p>`
     usernamesList.innerHTML +=`<p>${data.username}</p>`
 });
-
-
 
 socket.on('chat:timeMessage', function (data){
 
@@ -55,13 +60,7 @@ socket.on('usernamesList', data=>{
     }
     usernamesList.html(html);
 });
+/*socket.on('chat:message', function (data){
 
-socket.on('chats:server', function(data){
-
-    chat.append(data.hora+' '+`<b>+ data.username +</b>: `+data.message +'<br/>')
-
-    switch(data.message){
-        case 'hola' :chat.append(data.hora+' '+'<b>'+ 'Servidor'+ '</b>: ' + "hola"+'<br/>')
-        break;
-    };
-});
+    output.innerHTML =  `<p> ${data.value} </p>`
+});*/
