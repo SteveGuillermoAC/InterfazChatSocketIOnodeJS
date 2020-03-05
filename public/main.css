@@ -7,6 +7,7 @@ body{
 
 }
 #chat-container {
+
     max-width: 100%;
     margin: 30px auto;
     border: 1px solid  #ddd;
@@ -43,10 +44,19 @@ input {
     display: block;
     width: 100%;
 }
-button{
+#send{
 
-    background: #575ed8;
+    background: #31346b;
     color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding:12px 0 ;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}
+#jugar{
+    background: #7f9caf;
+    color: #07203a;
     font-size: 18px;
     border: 0;
     padding:12px 0 ;
@@ -59,4 +69,18 @@ button{
     margin: 5px;
     color:#003973;
     font-weight: bolder;
+    width: 50% ;
+    height: 50%;
+}
+
+#container-listUsuarios{
+    size: 50%;
+}
+
+#titleUsers{
+    color: #07203a;
+    padding: 4px;
+}
+#idServer{
+    color: aqua;
 }

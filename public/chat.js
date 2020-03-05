@@ -20,6 +20,11 @@ let usernamesList =document.getElementById('usernames');
 let usuarios =[]; 
 let chat = ('')  
 
+//juego del ahorcado
+let palabra = [];
+let btnjugar = document.getElementById('jugar');
+
+
 btn.addEventListener('click', function () {
     socket.emit('chat:message', {
         hora: h,
@@ -28,11 +33,31 @@ btn.addEventListener('click', function () {
 
     })
     if(message.value=='hola'){
-        socket.emit('chat:message', {hora: h,message: 'Server says hola', username:'Server'})
+        socket.emit('chat:message', {hora: h,message: 'Hello', username:'Server'})
     }else if(message.value=='nada'){
         socket.emit('chat:message', {hora: h,message: 'Server doesnt say anything', username:'Server'})
     }else if (message.value=='que hubo'){
         socket.emit('chat:message', {hora: h,message: 'Hey', username:'Server'})
+    }else if(message.value=='Where r u from?'){
+        socket.emit('chat:message',{hora: h,message: 'Im from USA', username:'Server'})
+    }
+    else if(message.value=='Where r u from?'){
+    socket.emit('chat:message',{hora: h,message: 'Im from USA', username:'Server'})
+    }
+    else if(message.value=='Where r u from?'){
+        socket.emit('chat:message',{hora: h,message: 'Im from USA', username:'Server'})
+    }
+    else if(message.value=='U just speak english and spanish?'){
+        socket.emit('chat:message',{hora: h,message: 'Maybe', username:'Server'})
+    }
+    else if(message.value=='Why?'){
+        socket.emit('chat:message',{hora: h,message: 'i dont know why', username:'Server'})
+    }
+    else if(message.value=='OK?'){
+        socket.emit('chat:message',{hora: h,message: 'why ok?', username:'Server'})
+    }
+    else if(message.value=='How old r u?'){
+        socket.emit('chat:message',{hora: h,message: 'IDK', username:'Server '})
     }
 });
 
@@ -59,8 +84,4 @@ socket.on('usernamesList', data=>{
         html += `<p> <i> class="fas fa-unernamesList"></i> ${data[i]} </p>`
     }
     usernamesList.html(html);
-});
-/*socket.on('chat:message', function (data){
-
-    output.innerHTML =  `<p> ${data.value} </p>`
-});*/
+})
